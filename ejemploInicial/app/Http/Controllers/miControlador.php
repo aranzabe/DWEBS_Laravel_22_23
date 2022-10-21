@@ -30,8 +30,8 @@ class miControlador extends Controller
             'email' => $fak->email,
             'ciudad' => $fak->city,
             'comp: ' => $fak->company,
-            'claveAleatoria' => $fak->password,
-            'DNI' => $fak->dni
+            'claveAleatoria' => $fak->password
+            //'DNI' => $fak->dni
         ];
         //Dirección de interés para faker: https://code.tutsplus.com/es/tutorials/using-faker-to-generate-filler-data-for-automated-testing--cms-26824
         return response()->json($datos,200,['Content-Type'=>'application/json'],JSON_UNESCAPED_UNICODE);
