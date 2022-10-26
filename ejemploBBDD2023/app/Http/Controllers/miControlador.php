@@ -10,9 +10,9 @@ class miControlador extends Controller
     public function listar() {
         //************* Sin QueryBuilder ******************
         // a) Select sencilla con un valor.
-        $personas = DB::select('select * from personas where DNI = ?', ['3C']);
+        //$personas = DB::select('select * from personas where DNI = ?', ['3C']);
         //b) Usando un parámetro con nombre.
-        // $personas = \DB::select('select * from personas where DNI = :dn', ['dn' => '4D']);
+        //$personas = DB::select('select * from personas where DNI = :dn', ['dn' => '4D']);
         //c) Consulta de varias tablas.
         // $quer = 'select * from personas, propiedades, coches'
         //   . ' where propiedades.DNI = personas.DNI '
@@ -23,7 +23,7 @@ class miControlador extends Controller
          * Otros ejemplos sin QB:
          */
         // try {
-        //     \DB::insert('insert into personas (DNI, Nombre, Tfno, edad) values (?, ?, ?, ?)', ['007', 'Naiden', '1234', 36]);
+        //     DB::insert('insert into personas (DNI, Nombre, Tfno, edad) values (?, ?, ?, ?)', ['007', 'Naiden', '1234', 36]);
         //     /* $afectadas = \DB::update('update personas set Tfno = '100' where DNI = ?', ['3C'])
         //      * $borradas = \DB::delete('delete from personas');
         //      */
@@ -41,18 +41,18 @@ class miControlador extends Controller
         //************* Con Query Builder ****************
         //Dirección de interés para Query Builder: https://laravel.com/docs/5.5/queries
         //a) El equivalente de una select *.
-        //$personas = DB::table('personas')->get();
+        $personas = DB::table('personas')->get();
         //b) Select con condiciones
-        // $personas = \DB::table('personas')
-        //  ->select('DNI', 'Nombre', 'Tfno', 'edad')
-        //  ->where('DNI', '=', '4D')
-        //  ->orderBy('edad', 'desc')
-        //  ->get();
+        // $personas = DB::table('personas')
+        // ->select('DNI', 'Nombre', 'Tfno', 'edad')
+        // ->where('DNI', '=', '5E')
+        // ->orderBy('edad', 'desc')
+        // ->get();
         //c) Selección con opciones AND y OR
         // $personas = DB::table('personas')
         //  ->select('DNI','Nombre','Tfno','edad')
         //  ->whereBetween('edad', [35, 40])
-        //  ->orwhere('nombre','Laura')
+        //  ->orwhere('nombre','Alicia')
         //  ->orderBy('edad','desc')
         //  ->get();
         //d) Selección haciendo join de varias tablas.
@@ -60,7 +60,7 @@ class miControlador extends Controller
         //         ->join('propiedades', 'propiedades.DNI', '=', 'personas.DNI')
         //         ->join('coches', 'coches.Matricula', '=', 'propiedades.Matricula')
         //         ->select('personas.DNI', 'Nombre', 'edad', 'Marca', 'Modelo')
-        //         //->where('nombre','Obiguan')
+        //         ->where('nombre','Obiguan')
         //         ->get();
 
         ///Otras opciones con QB:
@@ -76,9 +76,9 @@ class miControlador extends Controller
 
         // $personas = DB::table('personas')
         //  ->where('DNI', '1A')
-        //  ->update(['Tfno' => '123']);
-        //$personas = \DB::table('personas')->where('edad', '<', 18)->delete();
-        //$personas = \DB::table('personas')->truncate();
+        //  ->update(['Tfno' => '123556']);
+        // $personas = DB::table('personas')->where('DNI', '=', '007')->delete();
+        // $personas = \DB::table('personas')->truncate();
 
 
 
@@ -91,8 +91,8 @@ class miControlador extends Controller
     }
 
     public function pruebaFaker() {
-        $fak = \Faker\Factory::create('es_ES');
-        //$fak = \Faker\Factory::create('fr_FR');
+        $fak = \Faker\Factory::create('fr_FR');
+        //$fak = \Faker\Factory::create();
          $datos = [
             'nombreCompleto: ' => $fak->name,
             'nombre' => $fak->firstName,
@@ -102,8 +102,8 @@ class miControlador extends Controller
             'email' => $fak->email,
             'ciudad' => $fak->city,
             'comp: ' => $fak->company,
-            'claveAleatoria' => $fak->password,
-            'DNI' => $fak->dni
+            'claveAleatoria' => $fak->password
+            //'DNI' => $fak->dni
         ];
         //Dirección de interés para faker: https://code.tutsplus.com/es/tutorials/using-faker-to-generate-filler-data-for-automated-testing--cms-26824
         //return response()->json($datos,200,['Content-Type'=>'application/json'],JSON_UNESCAPED_UNICODE);
