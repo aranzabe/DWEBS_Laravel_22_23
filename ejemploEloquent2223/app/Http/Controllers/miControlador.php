@@ -24,7 +24,7 @@ class miControlador extends Controller
     //------------------------------------------------------------------------
     public function buscarPersona($dni) {
         //Opción A.
-        //$pers = Persona::where('DNI', $dn)->first();
+        //$pers = Persona::where('edad', '>', 18)->all();
         //Opción B.
         $pers = Persona::find($dni);
 
@@ -33,17 +33,14 @@ class miControlador extends Controller
 
     //------------------------------------------------------------------------
     public function insertarPersonas(Request $req) {
-        $dn = $req->get('DNI');
-        $no = $req->get('Nombre');
-        $tf = $req->get('Tfno');
-        $ed = $req->get('edad');
+
 
         $pe = new Persona;
 
-        $pe->DNI = $dn;
-        $pe->Nombre = $no;
-        $pe->Tfno = $tf;
-        $pe->edad = $ed;
+        $pe->DNI = $req->get('DNI');
+        $pe->Nombre = $req->get('Nombre');
+        $pe->Tfno = $req->get('Tfno');
+        $pe->edad = $req->get('edad');
         //return response()->json($pe,200);
         $mensaje = 'Inserción ok';
         try {
@@ -188,6 +185,7 @@ public function probarManyUnaPersona($dni) {
      //-------------------------------------------------------------------
      public function verComentarios(){
         $comentarios = Persona::with(['comentarios'])->get();
+        return response()->json($comentarios,200);
         //dd($comentarios);
         $coments = [];
         $i=0;
