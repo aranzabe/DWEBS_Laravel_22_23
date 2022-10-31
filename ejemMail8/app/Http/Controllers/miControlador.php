@@ -18,7 +18,7 @@ class miControlador extends Controller
         $nombre = 'Fernando';
 
         //Le mando la vista 'welcome' como cuerpo del correo.
-        Mail::send('welcome', $datos, function($message) use ($email)
+        Mail::send('correo', $datos, function($message) use ($email)
         {
             $message->to($email)->subject('Ejemplo de envío');
             $message->from('AuxiliarDAW2@gmail.com', 'Esto es un ejemplo de envío de correo electronico desde Laravel');
