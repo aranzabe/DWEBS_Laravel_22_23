@@ -17,4 +17,7 @@ Tendremos que regenerar la key del proyecto con:
     php artisan key:generate
 
 
-Finalmente, si estás en Linux, otorga todos los permisos a toda la carpeta del proyecto: chmod 777 -R ejemploXXX
+Finalmente, si estás en Linux, otorga todos los permisos a toda la carpeta del proyecto: chmod 777 -R ejemploXXX si lo quieres levantar con Apache.
+Si lo quieres desplegar con el servidor de desarrollo:
+
+    php artisan serve
