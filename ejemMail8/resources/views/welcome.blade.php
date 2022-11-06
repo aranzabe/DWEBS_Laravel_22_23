@@ -21,6 +21,8 @@
         </style>
     </head>
     <body class="antialiased">
-        Esto para el correo....
+        <?php echo "Bienvenido".$nombreUsuario." tu correo es: ".$idU; ?>
+
+
     </body>
 </html>

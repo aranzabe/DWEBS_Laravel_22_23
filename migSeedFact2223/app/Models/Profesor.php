@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Parte;
 
 class Profesor extends Model
 {
@@ -11,7 +12,8 @@ class Profesor extends Model
 
     protected $table="profesores";
 
+    //\App\Models\Profesor::with('partesPuestos')->get()
     function partesPuestos(){
-        return $this->hasMany(Parte::class,'idprofesor','id');
+        return $this->hasMany(Parte::class,'id','idprofesor');
     }
 }

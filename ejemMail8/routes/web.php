@@ -19,5 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('otra', function () {
+    return view('welcome',[
+        'nombreUsuario' => 'Fernando',
+        'email' => 'faranzabe@gmail.com',
+        'idU' => 1234
+    ]);
+});
+
 Route::get('envia', [miControlador::class,'enviar']);
 //https://medium.com/graymatrix/using-gmail-smtp-server-to-send-email-in-laravel-91c0800f9662
