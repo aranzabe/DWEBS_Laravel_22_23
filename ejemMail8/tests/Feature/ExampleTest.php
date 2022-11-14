@@ -12,10 +12,19 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_PonemosLoQueSea()
     {
-        $response = $this->get('/');
+        $response = $this->get('/api/');
 
         $response->assertStatus(200);
     }
+
+    public function test_otra_cosa()
+    {
+        $response = $this->get('/api/loquesea');
+
+        $response->assertStatus(201);
+    }
+
+
 }

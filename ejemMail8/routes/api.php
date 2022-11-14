@@ -18,5 +18,12 @@ use App\Http\Controllers\miControlador;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get("/",function (Request $request) {
+    return response()->json(["mesn" => "sdkljfkls"],200);
+});
+Route::get("loquesea",function (Request $request) {
+    return response()->json(["mesn" => "sdkljfkls"],201);
+});
 
 Route::get('envia', [miControlador::class,'enviar']);
+
